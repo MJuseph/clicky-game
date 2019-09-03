@@ -7,11 +7,106 @@ import charachters from './charachters.json';
 
 function App() {
   return (
+    <>
     <div className="App">
-      < ClickyGame/>
+      < ClickyGame charachters={charachters}/> 
     </div>
+    </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

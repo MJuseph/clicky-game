@@ -14,20 +14,29 @@ let styles = {
         padding : "20px"
       },
     navbarStyle: {
-        background: "green",
-        fontSize: 20
+        background: "#2C323C",
+        fontSize: 20,
+        color: "white"
     },
     
     sectionStyles: {
         background: "orange"
-    }
+    },
+    img:{
+      width: "150px"
+    }, 
+    imgwrapper: {
+      display: "inline-block",
+      padding: "10px",
+      margin:"50px"
+      },
+    
     
 }
 
 function ClickyGame(props){
-  // const [score, highscore] = useState(0);
     return(
-        <>
+      <>
     <header style={styles.headerStyle} className="header">
       <h1 style={styles.headingStyle}>Clicky Game</h1>
       <h5 style={styles.h5}>Click on an image to earn points, but don't click on any more than once!</h5>
@@ -39,12 +48,19 @@ function ClickyGame(props){
     </nav>
 
     <section style={styles.sectionStyles} className="section">
-      <div className="card">
-      <img className="card-img-top" src={props.image} alt={props.name}/>
-      </div>
+     
+      {props.charachters.map(charachter => ( <div style={styles.imgwrapper} className="card">
+        <div style={styles.imgwrappersm}>
+         <img style={styles.img} className="card-img-top img-thumbnail" src={charachter.image} alt={charachter.name}/>
+         </div>
+      </div>) )}
+
     </section>
 
-        </>
+      
+
+
+      </>
     );
 }
 
