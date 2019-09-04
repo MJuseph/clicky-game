@@ -1,187 +1,72 @@
-import React from 'react';
-import './App.css';
-import ClickyGame from './components/index';
-import charachters from './charachters.json';
+import React, { Component } from "react";
+// import FriendCard from "./components/FriendCard";
+// import Wrapper from "./components/Wrapper";
+// import Title from "./components/Title"
+import friends from "./friends.json";
 
-
-
-function App() {
+/* any simple function components can be placed here [or imported from other files] */
+function FriendCard(props) {
   return (
-    <>
-    <div className="App">
-      < ClickyGame charachters={charachters}/> 
-    </div>
-    </>
+    <div className="card">
+      <div className="img-container">
+        <img alt={props.name} src={props.image} />
+      </div>
+     </div>
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class App extends React.Component {
-//   // Setting this.state.charachters to the charachters json array
-//   state = {
-//     charachters,
-//     score: 0,
-//     highscore: 0
-//   };
-
-//   gameOver = () => {
-//     if (this.state.score > this.state.highscore) {
-//       this.setState({highscore: this.state.score}, function() {
-//         console.log(this.state.highscore);
-//       });
-//     }
-//     this.state.charachters.forEach(charachter => {
-//       charachter.count = 0;
-//     });
-//     alert(`Game Over :( \nscore: ${this.state.score}`);
-//     this.setState({score: 0});
-//     return true;
-//   }
-
-//   clickCount = id => {
-//     this.state.charachters.find((o, i) => {
-//       if (o.id === id) {
-//         if(charachters[i].count === 0){
-//           charachters[i].count = charachters[i].count + 1;
-//           this.setState({score : this.state.score + 1}, function(){
-//             console.log(this.state.score);
-//           });
-//           this.state.charachters.sort(() => Math.random() - 0.5)
-//           return true; 
-//         } else {
-//           this.gameOver();
-//         }
-//       }
-//     });
-//   }
-//   // Map over this.state.charachters and render a charachtercharachter component for each charachter object
-//   render() {
-//     return (
-//       <Section>
-//         <Header score={this.state.score} highscore={this.state.highscore}>Clicky Game</Header>
-//         {this.state.charachters.map(charachter => (
-//           <charachter
-//             clickCount={this.clickCount}
-//             id={charachter.id}
-//             key={charachter.id}
-//             image={charachter.image}
-//           />
-//         ))}
-//       </Section>
-//     );
-//   }
-// }
-
+/* actual app component, as a class as it uses states */
+class App extends Component {
+  // Setting this.state.friends to the friends json array
+  state = {
+    friends,
+    score: 0,
+    highScore: 0,
+    maxScore: 12
+  };
+  handleIncrement = () => {
+    this.setState({ score: this.state.score + 1 });
+  };
+
+  // shuffle = (friends)=> {
+  //     let j, x, i;
+  //     for (i = friends.length - 1; i > 0; i--) {
+  //         j = Math.floor(Math.random() * (i + 1));
+  //         x = friends[i];
+  //         friends[i] = friends[j];
+  //         friends[j] = x;
+  //     }
+  // }
+  
+
+  // Map over this.state.friends and render a FriendCard component for each friend object
+  // gameOver = () =>{
+  //   if({this.state.score}>12){
+
+  //   }
+  // }
+  render() {
+    return (
+      <div class="wrapper">
+        <nav class="navbar">
+      <a class= "resetGame" href="/">Reset the game</a>
+      Score: {this.state.score} | Top-Score: {this.state.highScore}
+    </nav>
+        <h1 className="title">Clicky-Game</h1>
+        {this.state.friends.map(friend => (
+         <button onClick={this.handleIncrement}>
+         <FriendCard
+            // shuffle = {this.shuffle}
+            id={friend.id}
+            key={friend.id}
+            name={friend.name}
+            image={friend.image}
+          />
+          </button>
+        ))}
+      </div>
+    );
+  }
+}
 
 export default App;
