@@ -21,7 +21,7 @@ class App extends Component {
     friends,
     score: 0,
     highScore: localStorage.highScore,
-    maxScore: 12,
+    maxScore: 12
   };
 
   gameOver = () => {
